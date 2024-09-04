@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Place</title>
+</head>
+<body>
+    <h1>Add a New Place to Walk My Dog!</h1>
+    <form action="/places" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+        <label for="location">location</label>
+        <input type="text" name="location" id="location">
+        <label for="leash">leash required</label>
+        <label for="yes">yes</label>
+        <input type="radio" name="leash" id="yes" value="yes">
+        <label for="no">no</label>
+        <input type="radio" name="leash" id="no" value="no">
+        <button>Submit</button>
+    </form>
+</body>
+</html>

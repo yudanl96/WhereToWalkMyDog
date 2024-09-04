@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+</head>
+<body>
+    <h1><%=place.name%></h1>
+    <ul>
+        <li><%=place.location%></li>
+        <li>leash <%=(place.leash)? 'required': 'not required'%></li>
+    </ul>
+    <a href="/places">Back to all places</a>
+    <a href="/places/<%=place._id%>/edit">Edit this places</a>
+    <form action="/places/<%=place._id%>?_method=DELETE" method="POST">
+        <button>Delete this place</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places</title>
+</head>
+<body>
+    <h1>All Places</h1>
+    <a href="/places/new">all a new place</a>
+    <ul>
+        <%for( const place of places){%>
+            <li><a href="/places/<%=place._id%>"><%=place.name%> </a>in <%=place.location%>, leash <%=(place.leash)? 'required': 'not required'%></li>
+        <%}%>
+    </ul>
+</body>
+</html>
