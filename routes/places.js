@@ -24,7 +24,7 @@ router.get('/new',loggedInRedir,(req,res)=>{
 })
 
 router.post('/',validateInput(placeSchema),loggedInRedir,tryCatchAsync(async (req,res)=>{
-  const place = new Place(req.body);
+  const place = new Place({...req.body, userId:req.user._id});
   await place.save();
   req.flash('success', 'Thanks for sharing a new place!');
   res.redirect(`/places/${place._id}`);
