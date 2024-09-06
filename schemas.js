@@ -15,6 +15,12 @@ const reviewSchema = Joi.object({
     comment: Joi.string().required()
   })
 
+const userSchema = Joi.object({
+  username: Joi.string().required(),
+  password: Joi.string().required(),
+  email: Joi.string().email()
+})
+
 const validateInput = (schemaType)=>{
   return (req,res,next)=>{
     const {error} = schemaType.validate(req.body)
@@ -27,4 +33,4 @@ const validateInput = (schemaType)=>{
   }
 }
 
-module.exports = {placeSchema, validateInput, reviewSchema}
+module.exports = {placeSchema, validateInput, reviewSchema, userSchema}

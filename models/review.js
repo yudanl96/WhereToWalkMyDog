@@ -13,7 +13,17 @@ const ReviewSchema = new Schema({
     },
     placeId:{
         type: mongoose.ObjectId,
-        required:true
+        required:true,
+        ref: 'Place'
+    },
+    username:{
+        type: String,
+        required: true
+    },
+    userId:{
+        type: mongoose.ObjectId,
+        required:true,
+        ref: 'User'
     }
 })
 
