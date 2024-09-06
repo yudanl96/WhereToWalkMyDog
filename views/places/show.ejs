@@ -1,20 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
-</head>
-<body>
-    <h1><%=place.name%></h1>
-    <ul>
-        <li><%=place.location%></li>
-        <li>leash <%=(place.leash)? 'required': 'not required'%></li>
-    </ul>
-    <a href="/places">Back to all places</a>
-    <a href="/places/<%=place._id%>/edit">Edit this places</a>
-    <form action="/places/<%=place._id%>?_method=DELETE" method="POST">
-        <button>Delete this place</button>
-    </form>
-</body>
-</html>
+<% layout('layouts/template') %>
+
+<div class="row">
+    <div class="col-5 ">
+        <div class="card" >
+            <img src="<%=place.img%>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%=place.name%></h5>
+              <p class="card-text"><%=place.description%></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%=place.location%></li>
+              <li class="list-group-item">Leash <%=(place.leash)? 'required': 'not required'%></li>
+            </ul>
+            <div class="card-body">
+                <form class="d-inline" action="/places/<%=place._id%>/edit" >
+                    <button type="submit" class="btn btn-primary btn-sm" >Edit</button>
+                </form>
+                <form class="d-inline" action="/places/<%=place._id%>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger btn-sm" >Delete</button>
+                </form>
+            </div>
+          </div>
+    </div>
+
+    <div class="col offset-1">
+      <div class="card mb-3">
+        <h5 class="card-header">What does your pup think?</h5>
+        <div class="card-body">
+          <form action="/reviews" method="POST">
+            <div class="row row-cols-auto g-5 align-items-center mb-3 px-3">
+              <div class="col-9">
+                  <label for="score" class="form-label">Rating</label>
+                  <input type="range" class="form-range" min="1" max="5" step="1" name="score" id="score"> 
+              </div>
+              <div class="col-auto">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+            <div class="row row px-3">
+              <textarea class="form-control"  name="comment" id="comment" placeholder="Woof we should go to this place tomorrow!"></textarea>
+            </div>
+            <input type="hidden" name="placeId" value="<%=place._id%>">
+          </form>
+        </div>
+      </div>
+      
+      <%for(const review of place.reviews){%>    
+        <form action="/reviews/<%=review._id%>?_method=DELETE" method="POST">
+        <div class="card mb-3">
+          <div class="card-header">
+            <div class="d-flex align-items-center">
+            <div class="">
+              <b>USERNAME </b>
+            </div>
+            <div class="ms-auto"><%=`🐕`.repeat(review.score)%></div>
+            <div class="ms-3">
+              <button type="submit" class="btn btn-secondary btn-sm">Delete</button>
+            </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <%=review.comment%>
+            </p>
+          </div>
+        </div>
+      </form>  
+      <%}%>
+          
+    </div>
+</div>
+<!-- style="width: 18rem;" -->
+
+

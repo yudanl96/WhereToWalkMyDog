@@ -1,17 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Places</title>
-</head>
-<body>
-    <h1>All Places</h1>
-    <a href="/places/new">all a new place</a>
-    <ul>
-        <%for( const place of places){%>
-            <li><a href="/places/<%=place._id%>"><%=place.name%> </a>in <%=place.location%>, leash <%=(place.leash)? 'required': 'not required'%></li>
-        <%}%>
-    </ul>
-</body>
-</html>
+<% layout('layouts/template') %>
+
+<div class="container text-center">
+<h1>All Places</h1>
+<a href="/places/new">add a new place</a>
+</div>
+<div>
+    <div class="container text-center ">
+        <div class="row row-cols-auto justify-content-center">
+            <%for( const place of places){%>
+                <div class="col mt-3 ">
+                <div class="card " style="width: 18rem;">
+                    <div class="ratio ratio-1x1">
+                        <img src="<%=place.img%>" class="card-img-top " alt="...">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><%=place.name%><br><%=place.location%>
+                        <form action="/places/<%=place._id%>">
+                            <button type="submit" class="btn btn-primary btn-sm" >Details</button>
+                        </form>
+                        </p>
+                    </div>
+                </div>
+                </div>
+            <%}%>
+    </div>
+    </div>
+</div>

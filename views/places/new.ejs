@@ -1,23 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Place</title>
-</head>
-<body>
-    <h1>Add a New Place to Walk My Dog!</h1>
-    <form action="/places" method="POST">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name">
-        <label for="location">location</label>
-        <input type="text" name="location" id="location">
-        <label for="leash">leash required</label>
-        <label for="yes">yes</label>
-        <input type="radio" name="leash" id="yes" value="yes">
-        <label for="no">no</label>
-        <input type="radio" name="leash" id="no" value="no">
-        <button>Submit</button>
-    </form>
-</body>
-</html>
+<% layout('layouts/template') %>
+<h1>Adding a new place for our furry friend</h1>
+<form action="/places" method="POST">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" id="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" name="location" id="location" class="form-control" required>
+    </div>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" name="description" id="description"> </textarea>
+    </div>
+    <div class="mb-3">
+        <label for="img" class="form-label">Image URL</label>
+        <input type="url" class="form-control" name="img" id="img">
+    </div>
+    <label for="leash">Leash required? </label>
+    <div class="mb-3 form-check-inline">
+        <input class="form-check-input" type="radio" name="leash" id="yes" value="true" required>
+        <label for="yes" class="form-check-label">Yes</label>
+    </div>
+    <div class="mb-3 form-check-inline">
+        <input class="form-check-input" type="radio" name="leash" id="no" value="false">
+        <label for="no" class="form-check-label">No</label>
+    </div>
+    <br><button type="submit" class="btn btn-success">Let's go! Woof woof!</button>
+</form>
