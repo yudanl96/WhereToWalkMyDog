@@ -1,0 +1,56 @@
+<% layout('layouts/template') %>
+<div class="container text-center mb-3">
+    <h1>Heading anywhere, <%=user.username%>?</h1>
+</div>
+
+<div class="row">
+    <div class="col-7">
+        <h3>My Saved Places</h3>
+        <%for (place of user.savedPlaces){ %>
+        <div class="card mb-3" style="max-width: 600px; max-height: 255px;">
+            <div class="row g-0">
+              <div class="col-md-3" style="min-width: 250px; min-height: 250px;">
+                <img src="<%=place.img%>" class="img-fluid rounded-start"  alt="...">
+              </div>
+              <div class="col">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <a href="/places/<%=place._id%>"> <%=place.name%> 
+                    </a></h5>
+                    <p class="card-text"><%=place.location%></p>
+                <div class="overflow-auto", style="max-height: 120px">
+                    <p><%=place.description%><%=place.description%></p>
+                </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        <%}%>
+    </div>
+
+    <div class="col">
+        <h3>My Posts</h3>
+        <%for (place of user.places){ %>
+        <div class="card mb-3", style="max-width: 500px; max-height: 155px;">
+            <div class="row g-0">
+              <div class="col-md-3">
+                <img src="<%=place.img%>" class="img-fluid rounded-start" style="max-height: 150px;" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body ">
+                  <h6 class="card-title">
+                    <a href="/places/<%=place._id%>">
+                        <%=place.name%> 
+                    </a></h6>
+                  <p class="card-text"><%=place.location%></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%}%>
+    </div>
+</div>
+<!-- style="width: 18rem;" -->
+
+
