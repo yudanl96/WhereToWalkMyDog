@@ -6,6 +6,8 @@ This project provides a platform for dog moms and dads to share their favorate d
 - Leave reviews for existing places
 - Save places that you like
 
+![Alt text](demo.gif)
+
 ## Installation
 ```bash
 npm i install
